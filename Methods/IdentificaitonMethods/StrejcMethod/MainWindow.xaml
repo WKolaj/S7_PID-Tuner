@@ -1,0 +1,11 @@
+﻿<lib:IdentificationWindow x:Class="StrejcMethod.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:lib ="clr-namespace:DynamicMethodsLibrary;assembly=DynamicMethodsLibrary"
+        Title="Strejc Identification Method" Height="768" Width="1366" MinWidth="1280" MinHeight="600" Margin="0,1,0,0">
+    <Grid>
+        <Grid>
+            <lib:IdentificationControl x:Name="identificationControl"/>
+        </Grid>
+    </Grid>
+</lib:IdentificationWindow>

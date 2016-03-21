@@ -1,0 +1,445 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{845E1557-768E-4E48-A52B-5CB38EE73A26}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DynamicMethodsLibrary</RootNamespace>
+    <AssemblyName>DynamicMethodsLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="OxyPlot">
+      <HintPath>..\packages\OxyPlot.Core.2014.1.546\lib\portable-net4+sl4+wp71+win8\OxyPlot.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot.WindowsForms">
+      <HintPath>..\packages\OxyPlot.2014.1.546\lib\net45\OxyPlot.WindowsForms.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot.Wpf, Version=2014.1.546.0, Culture=neutral, PublicKeyToken=75e952ba404cdbb0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\OxyPlot.2014.1.546\lib\net45\OxyPlot.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot.Xps, Version=2014.1.546.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\OxyPlot.2014.1.546\lib\net45\OxyPlot.Xps.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IdentificationControl.xaml.cs">
+      <DependentUpon>IdentificationControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IdentificationWindow.cs" />
+    <Compile Include="MethodAttribute.cs" />
+    <Compile Include="PIDControllerClass.cs" />
+    <Compile Include="PointApproximator.cs" />
+    <Compile Include="RealTimeIdentificationPlot.xaml.cs">
+      <DependentUpon>RealTimeIdentificationPlot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TransferFunctionClass.cs" />
+    <Compile Include="TransferFunction.xaml.cs">
+      <DependentUpon>TransferFunction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PerfomanceIndexMethod.cs" />
+    <Compile Include="TuningMethod.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="IdentificationControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RealTimeIdentificationPlot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TransferFunction.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\S7TCP\S7TCP.csproj">
+      <Project>{03fcb7ac-2ece-4146-b927-8b3dc3fef633}</Project>
+      <Name>S7TCP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TransferFunctionLib\TransferFunctionLib.csproj">
+      <Project>{2c97e534-453c-4050-bf8d-0a22bc748134}</Project>
+      <Name>TransferFunctionLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\accept.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\add_page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\add_to_shopping_cart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\attachment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\Bode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\calculator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\camera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\chart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\chart_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\chart_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\cloud_comment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\comment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\cut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\database.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\delete_page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\dollar_currency_sign.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\download_page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\edit_page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\email.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\equalizer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\euro_currency_sign.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\favourite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\film.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\full_page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\globe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\goOffline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\id_card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\iphone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\ipod.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\light_bulb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\mail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\mobile_phone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\monitor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\new_page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\newController.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\newPlant.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\nyquist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\openController.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\openPlant.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\page_accept.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\pin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\prize_winner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\process.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\promotion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\protection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\put_in_shopping_cart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\puzzle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\receive_mail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\remove_from_shopping_cart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\rss.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\saveController.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\savePlant.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\search_mail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\send_mail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\shopping_cart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\shopping_cart_accept.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\sterling_pound_currency_sign.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\Stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\television.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\text_page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\tool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\trash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\unlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\users.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\yen_currency_sign.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\zoom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\zoom_in.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons 24x24\zoom_out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

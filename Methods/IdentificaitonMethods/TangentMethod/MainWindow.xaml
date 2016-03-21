@@ -1,0 +1,9 @@
+﻿<lib:IdentificationWindow x:Class="Tangent_method.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:lib ="clr-namespace:DynamicMethodsLibrary;assembly=DynamicMethodsLibrary"
+        Title="Tangent method" Height="768" Width="1366" MinWidth="1280" MinHeight="600" Margin="0,1,0,0">
+    <Grid>
+        <lib:IdentificationControl x:Name="identificationControl" x:FieldModifier="public"/>
+    </Grid>
+</lib:IdentificationWindow>

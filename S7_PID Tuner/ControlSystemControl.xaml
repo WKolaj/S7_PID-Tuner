@@ -1,0 +1,38 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:S7_PID_Tuner" x:Class="S7_PID_Tuner.ControlSystemControl" 
+             mc:Ignorable="d" 
+             d:DesignHeight="665" d:DesignWidth="665">
+    <Grid Background="White">
+        <Border >
+            <Grid MouseDown="MouseDownOverPanel">
+                <local:PlantControl x:Name="processControl" HorizontalAlignment="Center" Margin="50,25,50,50" VerticalAlignment="Top"/>
+                <local:PIDControl x:Name="pidControllerControl" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="82,325,83,40" Height="245" Width="500"/>
+                <Canvas HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,225,500,0" Width="20" Height="100">
+                    <Line X1="10" Y1="100" X2="10" Y2="0" Stroke="Black" 
+                  StrokeThickness="2" StrokeDashCap="Round" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+                    <Line X1="0" Y1="15" X2="10" Y2="0" Stroke="Black" 
+                  StrokeThickness="2" StrokeDashCap="Round" StrokeEndLineCap="Round" StrokeStartLineCap="Round" />
+                    <Line X1="20" Y1="15" X2="10" Y2="0" Stroke="Black" 
+                  StrokeThickness="2" StrokeDashCap="Round" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+                </Canvas>
+                <Canvas HorizontalAlignment="Center" VerticalAlignment="Top" Margin="500,225,50,0" Width="20" Height="100">
+                    <Line X1="10" Y1="100" X2="10" Y2="0" Stroke="Black" 
+                  StrokeThickness="2" StrokeDashCap="Round" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+                    <Line X1="0" Y1="85" X2="10" Y2="100" Stroke="Black" 
+                  StrokeThickness="2" StrokeDashCap="Round" StrokeEndLineCap="Round" StrokeStartLineCap="Round" />
+                    <Line X1="20" Y1="85" X2="10" Y2="100" Stroke="Black" 
+                  StrokeThickness="2" StrokeDashCap="Round" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+                </Canvas>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+                    <Label Content="Simulation sample time: "/>
+                    <Label Content="0.1" x:Name="sampleTimeLabel"/>
+                </StackPanel>
+            </Grid>
+
+        </Border>
+    </Grid>
+</UserControl>

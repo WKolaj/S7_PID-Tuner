@@ -1,0 +1,308 @@
+﻿<Window x:Class="LSMethod.SignalBuilderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:local="clr-namespace:LSMethod"
+        Title="Configure Input Signal" Height="600" Width="1280" MinWidth="1280" MinHeight="600" ResizeMode="NoResize" Icon="tool.png" >
+    <Window.Resources>
+        <local:MinutesSecondsMiliTimeSpanConverter x:Key="DateTimeConverter" />
+        <local:MinutesSecondsMiliTimeSpan x:Key="validationRule"/>
+    </Window.Resources>
+    <Grid>
+        <Grid Background="#FF3C4561">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Background="#FFE5E5E5" Margin="10,10,5,5">
+                <RadioButton Margin="10" x:Name="stepRadioButton" GroupName="signalButtons" Checked="stepRadioButton_Checked" Unchecked="stepRadioButton_Unchecked">
+                    <ContentControl>
+                        <Image Source="Step.png" Width="87" Height="47" />
+                    </ContentControl>
+                </RadioButton>
+                <RadioButton Margin="10" x:Name="pulseRadioButton" GroupName="signalButtons" Checked="pulseRadioButton_Checked" Unchecked="pulseRadioButton_Unchecked" >
+                    <ContentControl>
+                        <Image Source="Pulse.png" Width="87" Height="47" />
+                    </ContentControl>
+                </RadioButton>
+                <RadioButton Margin="10" x:Name="doublePulseRadioButton" GroupName="signalButtons" Checked="doublePulseRadioButton_Checked" Unchecked="doublePulseRadioButton_Unchecked" >
+                    <ContentControl>
+                        <Image Source="DoublePulse.png" Width="87" Height="47" />
+                    </ContentControl>
+                </RadioButton>
+                <RadioButton Margin="10" x:Name="rampRadioButton" GroupName="signalButtons" Checked="rampRadioButton_Checked" Unchecked="rampRadioButton_Unchecked">
+                    <ContentControl>
+                        <Image Source="Ramp.png" Width="87" Height="47" />
+                    </ContentControl>
+                </RadioButton>
+                <RadioButton Margin="10" x:Name="pulseRampRadioButton" GroupName="signalButtons" Checked="pulseRampRadioButton_Checked" Unchecked="pulseRampRadioButton_Unchecked">
+                    <ContentControl>
+                        <Image Source="PulseRamp.png"  Width="87" Height="47" />
+                    </ContentControl>
+                </RadioButton>
+                <RadioButton Margin="10" x:Name="manualRampRadioButton" GroupName="signalButtons" Content="Manual Signal" Checked="manualRampRadioButton_Checked" Unchecked="manualRampRadioButton_Unchecked"/>
+            </StackPanel>
+            <Button Content="Apply" x:Name="applyButton" VerticalAlignment="Bottom"  Height="25" Margin="20,20,20,15" Click="applyButton_Click" />
+            <oxy:PlotView x:Name="signalPlot" Title="Signal" Background="#FFE5E5E5" Grid.Column="1"  Margin="5,10,10,5">
+                <oxy:PlotView.Series>
+                    <oxy:LineSeries ItemsSource="{Binding Path=SignalPoints}" Color="Black" Background="White" IsHitTestVisible="False" TrackerFormatString="{}{3}: {4}  {1}: {2}" />
+                </oxy:PlotView.Series>
+                <oxy:PlotView.Axes>
+                    <oxy:TimeSpanAxis Position="Bottom" MajorGridlineStyle="Solid" Title="Time" />
+                    <oxy:LinearAxis Position="Left" MajorGridlineStyle="Solid" Title="Signal value"/>
+                </oxy:PlotView.Axes>
+            </oxy:PlotView>
+            <Grid Margin="10,5,10,10" Background="#FFE5E5E5" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+                <StackPanel Orientation="Vertical"   HorizontalAlignment="Right" VerticalAlignment="Center"  >
+                    <StackPanel x:Name="stepPanel" Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Collapsed">
+                        <Label Content="Sample time [s]"/>
+                        <TextBox Width="75" Height="20">
+                            <TextBox.Text>
+                                <Binding Path="SignalFactor.StepSignal.SampleTime" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Converter="{StaticResource DateTimeConverter}">
+                                    <Binding.ValidationRules>
+                                        <local:MinutesSecondsMiliTimeSpan />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Label Content="Time length [s]" BorderThickness="10,0,0,0"/>
+                        <TextBox Width="75" Height="20">
+                            <TextBox.Text>
+                                <Binding Path="SignalFactor.StepSignal.Length" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Converter="{StaticResource DateTimeConverter}">
+                                    <Binding.ValidationRules>
+                                        <local:MinutesSecondsMiliTimeSpan />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Label Content="Start step [s]" BorderThickness="10,0,0,0"/>
+                        <TextBox Width="75" Height="20">
+                            <TextBox.Text>
+                                <Binding Path="SignalFactor.StepSignal.StepTime" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Converter="{StaticResource DateTimeConverter}">
+                                    <Binding.ValidationRules>
+                                        <local:MinutesSecondsMiliTimeSpan />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Label Content="Step value" BorderThickness="10,0,0,0"/>
+                        <TextBox Width="75" Height="20" Margin="0,0,10,0" Text="{Binding Path=SignalFactor.StepSignal.StepValue}"  />
+                    </StackPanel>
+                    <StackPanel x:Name="pulsePanel" Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Collapsed">
+                        <Label Content="Sample time [s]" />
+                        <TextBox Width="75" Height="20">
+                            <TextBox.Text>
+                                <Binding Path="SignalFactor.PulseSignal.SampleTime" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Converter="{StaticResource DateTimeConverter}">
+                                    <Binding.ValidationRules>
+                                        <local:MinutesSecondsMiliTimeSpan />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Label Content="Time length [s]" BorderThickness="10,0,0,0"/>
+                        <TextBox Width="75" Height="20">
+                            <TextBox.Text>
+                                <Binding Path="SignalFactor.PulseSignal.Length" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Converter="{StaticResource DateTimeConverter}">
+                                    <Binding.ValidationRules>
+                                        <local:MinutesSecondsMiliTimeSpan />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Label Content="Start pulse [s]" BorderThickness="10,0,0,0"/>
+                        <TextBox Width="75" Height="20">
+                            <TextBox.Text>
+                                <Binding Path="SignalFactor.PulseSignal.BeginPulseTime" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Converter="{StaticResource DateTimeConverter}">
+                                    <Binding.ValidationRules>
+                                        <local:MinutesSecondsMiliTimeSpan />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Label Content="Stop pulse [s]" BorderThickness="10,0,0,0"/>
+                        <TextBox Width="75" Height="20">
+                            <TextBox.Text>
+                                <Binding Path="SignalFactor.PulseSignal.EndPulseTime" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Converter="{StaticResource DateTimeConverter}">
+                                    <Binding.ValidationRules>
+                                        <local:MinutesSecondsMiliTimeSpan />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Label Content="Pulse value" BorderThickness="10,0,0,0"/>
+                        <TextBox Width="75" Height="20" Margin="0,0,10,0" Text="{Binding Path=SignalFactor.PulseSignal.PulseValue}" />
+
+                    </StackPanel>
+                    <StackPanel x:Name="doublePulsePanel" Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Collapsed">
+                        <Label Content="Sample time [s]"/>
+                        <TextBox Width="75" Height="20">
+                            <TextBox.Text>
+                                <Binding Path="SignalFactor.DoublePulseSignal.SampleTime" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Converter="{StaticResource DateTimeConverter}">
+                                    <Binding.ValidationRules>
+                                        <local:MinutesSecondsMiliTimeSpan />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Label Content="Time length [s]" BorderThickness="10,0,0,0"/>
+                        <TextBox Width="75" Height="20">
+                            <TextBox.Text>
+                                <Binding Path="SignalFactor.DoublePulseSignal.Length" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Converter="{StaticResource DateTimeConverter}">
+                                    <Binding.ValidationRules>
+                                        <local:MinutesSecondsMiliTimeSpan />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Label Content="Start pulse [s]" BorderThickness="10,0,0,0"/>
+                        <TextBox Width="75" Height="20">
+                            <TextBox.Text>
+                                <Binding Path="SignalFactor.DoublePulseSignal.BeginPulseTime" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Converter="{StaticResource DateTimeConverter}">
+                                    <Binding.ValidationRules>
+                                        <local:MinutesSecondsMiliTimeSpan />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Label Content="Reverse pulse [s]" BorderThickness="10,0,0,0"/>
+                        <TextBox Width="75" Height="20">
+                            <TextBox.Text>
+                                <Binding Path="SignalFactor.DoublePulseSignal.EndFirstPulseTime" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Converter="{StaticResource DateTimeConverter}">
+                                    <Binding.ValidationRules>
+                                        <local:MinutesSecondsMiliTimeSpan />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Label Content="End pulse [s]" BorderThickness="10,0,0,0"/>
+                        <TextBox Width="75" Height="20">
+                            <TextBox.Text>
+                                <Binding Path="SignalFactor.DoublePulseSignal.EndSecondPulseTime" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Converter="{StaticResource DateTimeConverter}">
+                                    <Binding.ValidationRules>
+                                        <local:MinutesSecondsMiliTimeSpan />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Label Content="First pulse value" BorderThickness="10,0,0,0"/>
+                        <TextBox Width="50" Height="20" Text="{Binding Path=SignalFactor.DoublePulseSignal.FirstPulseValue}" />
+                        <Label Content="Second pulse value" BorderThickness="10,0,0,0"/>
+                        <TextBox Width="50" Height="20" Margin="0,0,10,0" Text="{Binding Path=SignalFactor.DoublePulseSignal.SecondPulseValue}" />
+                    </StackPanel>
+                    <StackPanel x:Name="rampPanel" Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Collapsed">
+                        <Label Content="Sample time [s]"/>
+                        <TextBox Width="75" Height="20">
+                            <TextBox.Text>
+                                <Binding Path="SignalFactor.RampSignal.SampleTime" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Converter="{StaticResource DateTimeConverter}">
+                                    <Binding.ValidationRules>
+                                        <local:MinutesSecondsMiliTimeSpan />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Label Content="Time length [s]" BorderThickness="10,0,0,0"/>
+                        <TextBox Width="75" Height="20">
+                            <TextBox.Text>
+                                <Binding Path="SignalFactor.RampSignal.Length" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Converter="{StaticResource DateTimeConverter}">
+                                    <Binding.ValidationRules>
+                                        <local:MinutesSecondsMiliTimeSpan />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Label Content="Start ramp [s]" BorderThickness="10,0,0,0"/>
+                        <TextBox Width="75" Height="20">
+                            <TextBox.Text>
+                                <Binding Path="SignalFactor.RampSignal.BeginRampTime" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Converter="{StaticResource DateTimeConverter}">
+                                    <Binding.ValidationRules>
+                                        <local:MinutesSecondsMiliTimeSpan />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Label Content="End ramp time [s]" BorderThickness="10,0,0,0"/>
+                        <TextBox Width="75" Height="20">
+                            <TextBox.Text>
+                                <Binding Path="SignalFactor.RampSignal.EndRampTime" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Converter="{StaticResource DateTimeConverter}">
+                                    <Binding.ValidationRules>
+                                        <local:MinutesSecondsMiliTimeSpan />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Label Content="Ramp value" BorderThickness="10,0,0,0"/>
+                        <TextBox Width="75" Height="20" Margin="0,0,10,0"  Text="{Binding Path=SignalFactor.RampSignal.RampValue}" />
+                    </StackPanel>
+                    <StackPanel x:Name="rampPulsePanel" Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Collapsed">
+                        <Label Content="Sample time [s]"/>
+                        <TextBox Width="75" Height="20">
+                            <TextBox.Text>
+                                <Binding Path="SignalFactor.RampPulseSignal.SampleTime" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Converter="{StaticResource DateTimeConverter}">
+                                    <Binding.ValidationRules>
+                                        <local:MinutesSecondsMiliTimeSpan />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Label Content="Time length [s]" BorderThickness="5,0,0,0"/>
+                        <TextBox Width="75" Height="20">
+                            <TextBox.Text>
+                                <Binding Path="SignalFactor.RampPulseSignal.Length" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Converter="{StaticResource DateTimeConverter}">
+                                    <Binding.ValidationRules>
+                                        <local:MinutesSecondsMiliTimeSpan />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Label Content="First ramp [s]" BorderThickness="5,0,0,0"/>
+                        <TextBox Width="75" Height="20">
+                            <TextBox.Text>
+                                <Binding Path="SignalFactor.RampPulseSignal.BeginFirstRampTime" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Converter="{StaticResource DateTimeConverter}">
+                                    <Binding.ValidationRules>
+                                        <local:MinutesSecondsMiliTimeSpan />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Label Content="First Ramp End [s]" BorderThickness="5,0,0,0"/>
+                        <TextBox Width="75" Height="20">
+                            <TextBox.Text>
+                                <Binding Path="SignalFactor.RampPulseSignal.EndFirstRampTime" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Converter="{StaticResource DateTimeConverter}">
+                                    <Binding.ValidationRules>
+                                        <local:MinutesSecondsMiliTimeSpan />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Label Content="Second Ramp [s]" BorderThickness="5,0,0,0"/>
+                        <TextBox Width="75" Height="20">
+                            <TextBox.Text>
+                                <Binding Path="SignalFactor.RampPulseSignal.BeginSecondRampTime" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Converter="{StaticResource DateTimeConverter}">
+                                    <Binding.ValidationRules>
+                                        <local:MinutesSecondsMiliTimeSpan />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Label Content="Second Ramp End [s]" BorderThickness="5,0,0,0"/>
+                        <TextBox Width="75" Height="20">
+                            <TextBox.Text>
+                                <Binding Path="SignalFactor.RampPulseSignal.EndSecondRampTime" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Converter="{StaticResource DateTimeConverter}">
+                                    <Binding.ValidationRules>
+                                        <local:MinutesSecondsMiliTimeSpan />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <Label Content="Ramp Value value" BorderThickness="5,0,0,0" />
+                        <TextBox Width="50" Height="20" Text="{Binding Path=SignalFactor.RampPulseSignal.RampValue}"  Margin="0,0,5,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

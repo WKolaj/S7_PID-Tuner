@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="DynamicMethodsLibrary.RealTimeIdentificationPlot"
+             xmlns:oxy="http://oxyplot.org/wpf"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+         <oxy:PlotView x:Name="identificationChart" Title="Process Response" Grid.Row="0" Background="{x:Null}">
+            <oxy:PlotView.Series>
+                <oxy:LineSeries ItemsSource="{Binding CVPoints}" x:Name="CVSeries" Color="Black" Background="White" />
+                <oxy:LineSeries ItemsSource="{Binding PVPoints}" x:Name="PVSeries" Color="Green" Background="White" />
+                <oxy:LineSeries ItemsSource="{Binding ModelPoints}" x:Name="ModelSeries" Color="Aqua" Background="White" />
+            </oxy:PlotView.Series>
+            <oxy:PlotView.Axes>
+                <oxy:DateTimeAxis Position="Bottom" MajorGridlineStyle="Solid" Title="Time" />
+                <oxy:LinearAxis Position="Left" MajorGridlineStyle="Solid" Title="Signal" />
+            </oxy:PlotView.Axes>
+        </oxy:PlotView>
+    </Grid>
+</UserControl>

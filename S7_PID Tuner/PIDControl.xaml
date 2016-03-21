@@ -1,0 +1,200 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:S7_PID_Tuner" x:Class="S7_PID_Tuner.PIDControl" 
+             mc:Ignorable="d" d:DesignWidth="500" Height="257">
+    <Control.Resources>
+        <Storyboard x:Key="processPlantMouseOver">
+            <ColorAnimation
+                Storyboard.TargetName="LabelName"
+                Storyboard.TargetProperty="Background.Color"
+                To="#C4D9E9" Duration="00:00:00"/>
+            <ColorAnimation
+                Storyboard.TargetName="GridBackground"
+                Storyboard.TargetProperty="Background.Color"
+                To="#CEE3F1" Duration="00:00:00"/>
+            <ColorAnimation
+                Storyboard.TargetName="KpTextBox"
+                Storyboard.TargetProperty="Background.Color"
+                To="#F7FBFD" Duration="00:00:00"/>
+            <ColorAnimation
+                Storyboard.TargetName="TiTextBox"
+                Storyboard.TargetProperty="Background.Color"
+                To="#F7FBFD" Duration="00:00:00"/>
+            <ColorAnimation
+                Storyboard.TargetName="TdTextBox"
+                Storyboard.TargetProperty="Background.Color"
+                To="#F7FBFD" Duration="00:00:00"/>
+            <ColorAnimation
+                Storyboard.TargetName="NTextBox"
+                Storyboard.TargetProperty="Background.Color"
+                To="#F7FBFD" Duration="00:00:00"/>
+        </Storyboard>
+        <Storyboard x:Key="processPlantMouseOverDuringOnline">
+            <ColorAnimation
+                Storyboard.TargetName="LabelName"
+                Storyboard.TargetProperty="Background.Color"
+                To="#FFAF2E" Duration="00:00:00"/>
+            <ColorAnimation
+                Storyboard.TargetName="GridBackground"
+                Storyboard.TargetProperty="Background.Color"
+                To="#CEE3F1" Duration="00:00:00"/>
+            <ColorAnimation
+                Storyboard.TargetName="KpTextBox"
+                Storyboard.TargetProperty="Background.Color"
+                To="#F7FBFD" Duration="00:00:00"/>
+            <ColorAnimation
+                Storyboard.TargetName="TiTextBox"
+                Storyboard.TargetProperty="Background.Color"
+                To="#F7FBFD" Duration="00:00:00"/>
+            <ColorAnimation
+                Storyboard.TargetName="TdTextBox"
+                Storyboard.TargetProperty="Background.Color"
+                To="#F7FBFD" Duration="00:00:00"/>
+            <ColorAnimation
+                Storyboard.TargetName="NTextBox"
+                Storyboard.TargetProperty="Background.Color"
+                To="#F7FBFD" Duration="00:00:00"/>
+        </Storyboard>
+        <Storyboard x:Key="processPlantMouseLeft">
+            <ColorAnimation
+                Storyboard.TargetName="LabelName"
+                Storyboard.TargetProperty="Background.Color"
+                Duration="00:00:00"/>
+            <ColorAnimation
+                Storyboard.TargetName="GridBackground"
+                Storyboard.TargetProperty="Background.Color"
+                Duration="00:00:00"/>
+            <ColorAnimation
+                Storyboard.TargetName="KpTextBox"
+                Storyboard.TargetProperty="Background.Color"
+                Duration="00:00:00"/>
+            <ColorAnimation
+                Storyboard.TargetName="TiTextBox"
+                Storyboard.TargetProperty="Background.Color"
+                Duration="00:00:00"/>
+            <ColorAnimation
+                Storyboard.TargetName="TdTextBox"
+                Storyboard.TargetProperty="Background.Color"
+                Duration="00:00:00"/>
+            <ColorAnimation
+                Storyboard.TargetName="NTextBox"
+                Storyboard.TargetProperty="Background.Color"
+                Duration="00:00:00"/>
+        </Storyboard>
+    </Control.Resources>
+    <Border Name="MainBorder" BorderThickness="2" >
+        <Grid Name="MainGrid"  MouseEnter="MouseOverMainGrid" MouseLeave="MouseLeftMainGrid" ContextMenuOpening="MainGrid_ContextMenuOpening" MouseDown="MainGrid_MouseDown">
+            <Grid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Name="LoadMenuItem"  Header="Load from file..." Click="LoadClicked">
+                        <MenuItem.Icon>
+                            <Image Width="16" Height="16" Source="Icons 24x24/folder.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="SaveMenuItem"  Header="Save to file..." Click="SaveClicked">
+                        <MenuItem.Icon>
+                            <Image Width="16" Height="16" Source="Icons 24x24/save.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem Name="OnlineMenuItem" Header="Go online" Click="OnlineMenuItem_Click">
+                        <MenuItem.Icon>
+                            <Image Width="16" Height="16" Source="Icons 24x24/monitor.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="OfflineMenuItem" Header="Go offline" Click="OfflineMenuItem_Click" >
+                        <MenuItem.Icon>
+                            <Image Width="16" Height="16" Source="Icons 24x24/goOffline.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="DownloadMenuItem"  Header="Download to device" Click="DownloadMenuItem_Click" >
+                        <MenuItem.Icon>
+                            <Image Width="16" Height="16" Source="Icons 24x24/download.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </Grid.ContextMenu>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="LabelName" Content="PID Controller" Margin="0" HorizontalContentAlignment="Center" Grid.Row="0" VerticalContentAlignment="Center" Background="#FFCACCD9" FontWeight="Bold" FontSize="16"/>
+            <Border x:Name="GridBackground" BorderThickness="0" Grid.Row="1" Background="#FFDFE0E8">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="14*"/>
+                        <RowDefinition Height="29*"/>
+                        <RowDefinition Height="104*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="19*"/>
+                        <ColumnDefinition Width="89*"/>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="295*"/>
+                        <ColumnDefinition Width="74*"/>
+                        <ColumnDefinition Width="11*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Name="ControllerImage"  Grid.Column="1" Margin="0" Grid.Row="2" Source="Images/PID Controller.png"/>
+                    <Grid Grid.ColumnSpan="1" Grid.Column="3" Margin="0,10" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="13*" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="11*" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="11*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40*"/>
+                            <ColumnDefinition Width="98*"/>
+                            <ColumnDefinition Width="47*"/>
+                            <ColumnDefinition Width="110*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Name="KpTextBox" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" TextAlignment="Right" Height="22" Margin="0,2" LostFocus="KpTextBox_LostFocus" PreviewTextInput="AllowOnlyNumber" />
+                        <TextBox Name="TiTextBox" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" TextAlignment="Right" PreviewTextInput="AllowOnlyNumber" Height="22" Margin="0,2" LostFocus="TiTextBox_LostFocus"/>
+                        <TextBox Name="TdTextBox" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" TextAlignment="Right" PreviewTextInput="AllowOnlyNumber" Height="22" Margin="0,2" LostFocus="TdTextBox_LostFocus"/>
+                        <TextBox Name="NTextBox" Grid.Column="1" Grid.Row="6" TextAlignment="Right" VerticalAlignment="Center" PreviewTextInput="AllowOnlyNumber" Height="22" Margin="0,2" LostFocus="NTextBox_LostFocus"/>
+                        <Label Grid.Column="0" Grid.Row="0" Content="Kp"/>
+                        <Label Grid.Column="0" Grid.Row="2" Content="Ti"/>
+                        <Label Grid.Column="0" Grid.Row="4" Content="Td"/>
+                        <Label Grid.Column="0" Grid.Row="6" Content="N"/>
+                        <CheckBox Name="invertedCheckBox" Content="Inverted" Grid.Column="3" VerticalAlignment="Center"  Margin="0,5"  HorizontalAlignment="Left" Grid.Row="2" Checked="invertedCheckBox_Checked" Unchecked="invertedCheckBox_Unchecked" Height="16" />
+                        <ComboBox Name="PIDBox" Grid.Column="3" Margin="0,2" SelectionChanged="PIDBox_SelectionChanged" SelectedIndex="0" VerticalAlignment="Center" Height="22">
+                            <ComboBoxItem Content="P"/>
+                            <ComboBoxItem Content="PD"/>
+                            <ComboBoxItem Content="PI"/>
+                            <ComboBoxItem Content="PID"/>
+                        </ComboBox>
+                    </Grid>
+                    
+                    <StackPanel Grid.Row="3" Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.ColumnSpan="2" >
+                        <Label Content ="Online status:" x:Name="OnlineStatusLabel1" Visibility="Hidden" />
+                        <Label Content ="{Binding Path=StatusMessage}" x:Name="OnlineStatusLabel2" Visibility="Hidden" />
+                        <StackPanel Grid.Row="3" Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.ColumnSpan="3" Height="40"   >
+                            <Button HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="buttonOnline" Margin="5" ToolTip="Go online" Click="buttonOnline_Click">
+                                <Button.Content>
+                                    <Image Width="24" Height="24" Source="Icons 24x24/monitor.png"  />
+                                </Button.Content>
+                            </Button>
+                            <Button HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="buttonOffline" Margin="5" ToolTip="Go offline" Click="buttonOffline_Click">
+                                <Button.Content>
+                                    <Image Width="24" Height="24" Source="Icons 24x24/goOffline.png" />
+                                </Button.Content>
+                            </Button>
+                            <Button HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="buttonDownload" Margin="5" ToolTip="Download to device" Click="buttonDownload_Click" >
+                                <Button.Content>
+                                    <Image Width="24" Height="24" Source="Icons 24x24/download.png" />
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>

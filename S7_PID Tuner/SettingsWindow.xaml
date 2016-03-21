@@ -1,0 +1,39 @@
+﻿<Window x:Class="S7_PID_Tuner.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Settings" Width="330" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="Icons 24x24/process.png" SizeToContent="Height">
+    <Grid Background="#FFE5E5E5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="IP Adress" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"/>
+        <Label Content="Ident. Sample Time [ms]" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"/>
+        <Label Content="PID Sample Time [s]" Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"/>
+        <Label Content="Rack" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"/>
+        <Label Content="Slot" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"/>
+        <Label Content="DB Number" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"/>
+        <Label Content="Ti for non I algoritms" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"/>
+        <TextBox Grid.Column="1" Height="23" TextWrapping="Wrap" Text="{Binding Path=IPAdress}" VerticalAlignment="Center" TextAlignment="Right"/>
+        <TextBox x:Name="sampleTimeTextBox" Grid.Column="1" Height="23"  Grid.Row="1" TextWrapping="Wrap" Text="{Binding Path=IdentificationSampleTime}" VerticalAlignment="Center" TextAlignment="Right"/>
+        <TextBox Grid.Column="1" Height="23"  Grid.Row="2" TextWrapping="Wrap" Text="{Binding Path=Rack}" VerticalAlignment="Center" TextAlignment="Right"/>
+        <TextBox Grid.Column="1" Height="23"  Grid.Row="3" TextWrapping="Wrap" Text="{Binding Path=Slot}" VerticalAlignment="Center" TextAlignment="Right"/>
+        <TextBox Grid.Column="1" Height="23"  Grid.Row="4" TextWrapping="Wrap" Text="{Binding Path=DBNumber}" VerticalAlignment="Center" TextAlignment="Right"/>
+        <TextBox Grid.Column="1" Height="23"  Grid.Row="5" TextWrapping="Wrap" Text="{Binding Path=TiForNonI}" VerticalAlignment="Center" TextAlignment="Right"/>
+        <TextBox x:Name="PIDsampleTimeTextBox" Grid.Column="1" Height="23"  Grid.Row="6" TextWrapping="Wrap" Text="{Binding Path=PIDSampleTime}" VerticalAlignment="Center" TextAlignment="Right"/>
+        <StackPanel Grid.Column="0" Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.ColumnSpan="2" >
+            <Button Content="Ok" Width="75" Height="25" Margin="5" x:Name="ApplyButton" Click="ApplyButton_Click"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

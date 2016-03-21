@@ -1,0 +1,33 @@
+﻿<Window x:Class="TOSPDWithNomModelTunningMethods.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TOSPD with nominator model tunning" Height="357" Width="272" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="tool.png"   >
+    <Grid Background="#FFE5E5E5">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" >
+            <Label Content="Algorithm type" Margin="5,5,5,0"/>
+            <ComboBox x:Name="AlgorithmTypeComboBox" Margin="5" SelectedIndex="0" ItemsSource="{Binding PossibleAlgoritms}" 
+            DisplayMemberPath="ModeName" 
+            SelectedValuePath="Mode" SelectionChanged="AlgorithmTypeComboBox_SelectionChanged" >
+            </ComboBox>
+            <Label Content="Type of tuning method" Margin="5,5,5,0"/>
+            <ComboBox x:Name="TuningMethodTypeComboBox" Margin="5" SelectedIndex="0" ItemsSource="{Binding PossibleTuningTypes}" 
+            DisplayMemberPath="TypeName" 
+            SelectedValuePath="Type" SelectionChanged="TuningMethodTypeComboBox_SelectionChanged" >
+            </ComboBox>
+            <Label Content="Method name" Margin="5,5,5,0"/>
+            <ComboBox Margin="5" x:Name="MethodsComboBox" ItemsSource="{Binding Methods}" 
+            DisplayMemberPath="Name" SelectionChanged="MethodsComboBox_SelectionChanged"  >
+            </ComboBox>
+            
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10" Grid.Row="1">
+            <Button Content="Apply" Width="100" Height="25" Margin="5" x:Name="ApplyButton" Click="ApplyButton_Click"/>
+            <Button Content="Cancel" Width="100" Height="25" Margin="5" x:Name="CancelButton" Click="CancelButton_Click"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

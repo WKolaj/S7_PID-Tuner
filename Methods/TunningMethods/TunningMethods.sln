@@ -1,0 +1,94 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2013 for Windows Desktop
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelayModelTunningMethods", "DelayModelTunningMethods\DelayModelTunningMethods.csproj", "{A51238B0-728B-483E-BE8B-21562148B419}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FOLPDModelTunningMethods", "FOLPDModelTunningMethods\FOLPDModelTunningMethods.csproj", "{CB28C610-7D74-4DBB-B62B-5651A2A6240C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPDModelTunningMethods", "IPDModelTunningMethods\IPDModelTunningMethods.csproj", "{9445347F-EBA9-42E5-8222-52804092F841}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FOLIPDModelTunningMethods", "FOLIPDModelTunningMethods\FOLIPDModelTunningMethods.csproj", "{27CAFF68-F92A-4B8F-8A1A-9EF4183C3E9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPDZeroModelTunningMethod", "IPDZeroModelTunningMethod\IPDZeroModelTunningMethod.csproj", "{79483566-7D78-4FDD-94CA-91B8EC55CB7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FOLPDZeroModelTunningMethod", "FOLPDZeroModelTunningMethod\FOLPDZeroModelTunningMethod.csproj", "{6949F317-F8CE-4606-9395-D2A003BBF9C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOSPDModelTunningMethod", "SOSPDModelTunningMethod\SOSPDModelTunningMethod.csproj", "{2D1B0E85-83B7-4AE1-BF44-1836AC17B17A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOSPDZeroModelTunningMethod", "SOSPDZeroModelTunningMethod\SOSPDZeroModelTunningMethod.csproj", "{E9F70052-0AC8-4598-A35C-C14684273318}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOSIPDModelTunningMethods", "SOSIPDModelTunningMethods\SOSIPDModelTunningMethods.csproj", "{5B78C175-27A5-4681-955D-CE54D81F5CE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrejcModelTunningMethod", "StrejcModelTunningMethod\StrejcModelTunningMethod.csproj", "{895676A0-8476-4DA3-B7C7-2E071B6292AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOSPDModelTunningMethods", "TOSPDModelTunningMethods\TOSPDModelTunningMethods\TOSPDModelTunningMethods.csproj", "{ACD33606-7743-4DEE-8554-B9613D4DD97A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOSPDWithNomModelTunningMethods", "TOSPDWithNomModelTunningMethods\TOSPDWithNomModelTunningMethods.csproj", "{890F774E-4888-4522-A8F8-CDF308965D6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FOSPDWithNomPlusDelayModelTunningMethods", "FOSPDWithNomPlusDelayModelTunningMethods\FOSPDWithNomPlusDelayModelTunningMethods.csproj", "{8A5E446B-D1CB-43B3-B63B-7762ECDD83CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A51238B0-728B-483E-BE8B-21562148B419}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A51238B0-728B-483E-BE8B-21562148B419}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A51238B0-728B-483E-BE8B-21562148B419}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A51238B0-728B-483E-BE8B-21562148B419}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB28C610-7D74-4DBB-B62B-5651A2A6240C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB28C610-7D74-4DBB-B62B-5651A2A6240C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB28C610-7D74-4DBB-B62B-5651A2A6240C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB28C610-7D74-4DBB-B62B-5651A2A6240C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9445347F-EBA9-42E5-8222-52804092F841}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9445347F-EBA9-42E5-8222-52804092F841}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9445347F-EBA9-42E5-8222-52804092F841}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9445347F-EBA9-42E5-8222-52804092F841}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27CAFF68-F92A-4B8F-8A1A-9EF4183C3E9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27CAFF68-F92A-4B8F-8A1A-9EF4183C3E9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27CAFF68-F92A-4B8F-8A1A-9EF4183C3E9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27CAFF68-F92A-4B8F-8A1A-9EF4183C3E9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79483566-7D78-4FDD-94CA-91B8EC55CB7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79483566-7D78-4FDD-94CA-91B8EC55CB7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79483566-7D78-4FDD-94CA-91B8EC55CB7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79483566-7D78-4FDD-94CA-91B8EC55CB7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6949F317-F8CE-4606-9395-D2A003BBF9C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6949F317-F8CE-4606-9395-D2A003BBF9C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6949F317-F8CE-4606-9395-D2A003BBF9C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6949F317-F8CE-4606-9395-D2A003BBF9C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D1B0E85-83B7-4AE1-BF44-1836AC17B17A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D1B0E85-83B7-4AE1-BF44-1836AC17B17A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D1B0E85-83B7-4AE1-BF44-1836AC17B17A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D1B0E85-83B7-4AE1-BF44-1836AC17B17A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9F70052-0AC8-4598-A35C-C14684273318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9F70052-0AC8-4598-A35C-C14684273318}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9F70052-0AC8-4598-A35C-C14684273318}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9F70052-0AC8-4598-A35C-C14684273318}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B78C175-27A5-4681-955D-CE54D81F5CE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B78C175-27A5-4681-955D-CE54D81F5CE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B78C175-27A5-4681-955D-CE54D81F5CE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B78C175-27A5-4681-955D-CE54D81F5CE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{895676A0-8476-4DA3-B7C7-2E071B6292AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{895676A0-8476-4DA3-B7C7-2E071B6292AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{895676A0-8476-4DA3-B7C7-2E071B6292AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{895676A0-8476-4DA3-B7C7-2E071B6292AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACD33606-7743-4DEE-8554-B9613D4DD97A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACD33606-7743-4DEE-8554-B9613D4DD97A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACD33606-7743-4DEE-8554-B9613D4DD97A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACD33606-7743-4DEE-8554-B9613D4DD97A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{890F774E-4888-4522-A8F8-CDF308965D6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{890F774E-4888-4522-A8F8-CDF308965D6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{890F774E-4888-4522-A8F8-CDF308965D6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{890F774E-4888-4522-A8F8-CDF308965D6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A5E446B-D1CB-43B3-B63B-7762ECDD83CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A5E446B-D1CB-43B3-B63B-7762ECDD83CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A5E446B-D1CB-43B3-B63B-7762ECDD83CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A5E446B-D1CB-43B3-B63B-7762ECDD83CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

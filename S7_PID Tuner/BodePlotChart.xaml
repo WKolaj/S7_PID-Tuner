@@ -1,0 +1,74 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" 
+             xmlns:oxy="http://oxyplot.org/wpf"
+             xmlns:MyNamespace="clr-namespace:S7_PID_Tuner"
+             x:Class="S7_PID_Tuner.BodePlotChart"
+             mc:Ignorable="d" 
+             d:DesignHeight="665" d:DesignWidth="665">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <oxy:PlotView x:Name="gainChart" Title="Gain" Grid.Row="0" Background="{x:Null}">
+            <oxy:PlotView.Series>
+                <oxy:LineSeries ItemsSource="{Binding MarginBodePoints}" Color="Red" Background="White"  />
+                <oxy:ScatterSeries ItemsSource="{Binding GainMargins}" Background="White" Color="Black" MarkerType="Circle" MarkerSize="3" MarkerStroke="Black" OverridesDefaultStyle="True" MarkerFill="Black"  />
+            </oxy:PlotView.Series>
+            <oxy:PlotView.Axes>
+                <oxy:LogarithmicAxis Position="Bottom" MajorGridlineStyle="Solid" Title="Frequency [rad/s]"/>
+                <oxy:LinearAxis Position="Left" MajorGridlineStyle="Solid" Title="Gain [dB]"/>
+            </oxy:PlotView.Axes>
+        </oxy:PlotView>
+
+
+        <oxy:PlotView x:Name="phaseChart" Title="Phase" Grid.Row="1" Background="{x:Null}">
+            <oxy:PlotView.Series>
+                <oxy:LineSeries ItemsSource="{Binding PhaseBodePoints}" Color="Blue" Background="White"  />
+                <oxy:ScatterSeries ItemsSource="{Binding PhaseMargins}" Background="White"  MarkerType="Circle" MarkerSize="3" MarkerStroke="Black" OverridesDefaultStyle="True" MarkerFill="Black" />
+            </oxy:PlotView.Series>
+            <oxy:PlotView.Axes>
+                <oxy:LogarithmicAxis Position="Bottom" MajorGridlineStyle="Solid" Title="Frequency [rad/s]"/>
+                <oxy:LinearAxis Position="Left" MajorGridlineStyle="Solid" Title="Phase [degree]"/>
+            </oxy:PlotView.Axes>
+        </oxy:PlotView>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Content="Gain margin:"/>
+                <Label  Name="gainMarginLabel" Content="-"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Content="Phase margin:"/>
+                <Label  Name="phaseMarginLabel" Content="-"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <Button Content="Refresh plot" Click="RefreshClicked" Margin="5"/>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Content="Auto Range"/>
+                <CheckBox x:Name="autoRangeCheckbox" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="autoRangeCheckbox_Checked" Unchecked="autoRangeCheckbox_Unchecked"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Content="From"/>
+                <TextBox Name="omegaFromBox" Width="100" TextAlignment="Right" Height="22" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Content="To"/>
+                <TextBox Name="omegaToBox" Width="100" TextAlignment="Right" Height="22" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Content="Points"/>
+                <TextBox Name="numberOfPoints" Text="1000" Width="50" TextAlignment="Right" Height="22" />
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</UserControl>
+

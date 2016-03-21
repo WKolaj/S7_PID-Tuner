@@ -1,0 +1,24 @@
+﻿<Window x:Class="S7_PID_Tuner.ConnectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        Title="ConnectionWindow" Height="50" Width="200" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FFF0F0F0" ResizeMode="NoResize" ShowInTaskbar="False">
+    <Window.Resources>
+        <Storyboard x:Key="blinkAnimation" Duration="0:1:0" >
+            <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                        Storyboard.TargetName="connectionLabel"
+                        To= "#FFFF9E00"
+                        AutoReverse="True"
+                        RepeatBehavior="Forever"
+                        Duration="0:0:1.5"/>
+            <ColorAnimation Storyboard.TargetProperty="(BorderBrush).(SolidColorBrush.Color)"
+                        Storyboard.TargetName="connectionLabel"
+                        To= "#FFFF9E00"
+                        AutoReverse="True"
+                        RepeatBehavior="Forever"
+                        Duration="0:0:1.5"/>
+        </Storyboard>
+    </Window.Resources>
+    <Grid>
+        <Label x:Name="connectionLabel" Content="Trying to connect..." HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2" Foreground="#FF3C4561"  />
+    </Grid>
+</Window>

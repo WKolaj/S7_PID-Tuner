@@ -1,0 +1,34 @@
+﻿<lib:IdentificationWindow x:Class="LSMethod.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:lib="clr-namespace:DynamicMethodsLibrary;assembly=DynamicMethodsLibrary"
+        Title="LS Method" Height="768" Width="1366" MinWidth="1280" MinHeight="600" ShowInTaskbar="False">
+    <Grid>
+        <lib:IdentificationControl x:Name="identificationControl"/>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Width="200" VerticalAlignment="Top" Margin="10,200,0,0" >
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Model type:" Margin="10,10,0,10"/>
+                <ComboBox Margin="10" SelectedIndex="0" Width="100" x:Name="modelComboBox" SelectionChanged="modelComboBox_SelectionChanged">
+                    <ComboBoxItem Content="ARMA" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <ComboBoxItem Content="ARMAX" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </ComboBox>
+            </StackPanel>
+            
+            <Label Content="Input factors rank" Margin="10,10,10,0"/>
+            <TextBox  Margin="15,5" x:Name="uRankTextBox" Text="{Binding Path=URank}"/>
+            <Label Content="Output factors rank" Margin="10,0"/>
+            <TextBox  Margin="15,5" x:Name="yRankTextBox" Text="{Binding Path=YRank}"/>
+            <Label Content="Time delay [number of samples]" Margin="10,0"/>
+            <TextBox  Margin="15,5" x:Name="timeDelayTextBox" Text="{Binding Path=DiscreteDelay}"/>
+            <CheckBox Content="Auto time delay" Margin="15,5"  x:Name="timeDelayCheckBox" Checked="timeDelayCheckBox_Checked" Unchecked="timeDelayCheckBox_Unchecked" />
+            <StackPanel Orientation="Vertical" x:Name="AutoTimeDelayStackPanel" Visibility="Collapsed">
+
+                <Label Content="Start sample number" Margin="10,10,10,0"/>
+                <TextBox  Margin="15,5" x:Name="startTimeTextBox" Text="{Binding Path=StartKForAutoTimeDelay}"/>
+                <Label Content="End sample number" Margin="10,0"/>
+                <TextBox  Margin="15,5" x:Name="endTimeTextBox" Text="{Binding Path=EndKForAutoTimeDelay}"/>
+            </StackPanel>
+            
+        </StackPanel>
+    </Grid>
+</lib:IdentificationWindow>
